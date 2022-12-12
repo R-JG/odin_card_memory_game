@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Card from './components/Card';
+import { nanoid } from 'nanoid';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default function App() {
 
-export default App;
+    const [ cardArray, setCardArray ] = useState(
+        Array.from({length: 22}, () => (
+            {id: nanoid(), isClicked: false}
+        ))
+    );
+
+    const cardComponents = cardArray.map((card, index) => (
+        <Card 
+            key={card.id}
+            imageNumber={index}
+        />
+    ));
+
+    return (
+        <main>
+            <div className='cards-container'>
+                {cardComponents}
+            </div>
+        </main>
+    );
+};
