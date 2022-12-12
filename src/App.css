@@ -5,6 +5,14 @@ main {
     align-items: center;
 }
 
+.game-win {
+    background-color: rgb(171, 255, 216);
+}
+
+.game-loss {
+    background-color: rgb(255, 134, 134);
+}
+
 .cards-container {
     margin: 2em;
     display: grid;
